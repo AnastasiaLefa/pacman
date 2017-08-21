@@ -70,6 +70,7 @@
             this.load.crossOrigin = 'anonymous';
 
             this.load.image('dot', 'assets/sandwich.png');
+	    this.load.image('snail', 'assets/snail.png');
             this.load.image('tiles', 'assets/pacman-tiles.png');
             this.load.spritesheet('pacman', 'assets/finn.png', 32, 32);
             this.load.spritesheet('enemy', 'assets/lsp.png', 32, 32);
@@ -87,12 +88,18 @@
             this.layer = this.map.createLayer('Pacman');
 
             this.dots = this.add.physicsGroup();
+	    this.snail = this.add.physicsGroup();	
 
             this.map.createFromTiles(7, this.safetile, 'dot', this.layer, this.dots);
+	    this.map.createFromTiles(12, this.safetile, 'snail', this.layer, this.snail);
 
             //  The dots will need to be offset by 6px to put them back in the middle of the grid
             this.dots.setAll('x', 6, false, false, 1);
             this.dots.setAll('y', 6, false, false, 1);
+		
+	    
+            this.snail.setAll('x', 6, false, false, 1);
+            this.snail.setAll('y', 6, false, false, 1);
 
             //  Pacman should collide with everything except the safe tile
             this.map.setCollisionByExclusion([this.safetile], true, this.layer);
@@ -247,9 +254,9 @@
 
         },
 	    
-	TakeBonus: function (pacman, diamond) {
+	TakeBonus: function (pacman, snail) {
            
-		diamond.kill();
+		snail.kill();
             
             var audio = new Audio('assets/TakeDiamond.mp3');
             	audio.play()
@@ -257,8 +264,8 @@
             this.bonusscr += 10;
             this.TextBns.text = 'Bonus:' + this.bonusscr;
         
-            if(this.diamond.total === 0){
-           	 this.diamond.callAll('revive');
+            if(this.snail.total === 0){
+           	 this.snail.callAll('revive');
             }
         },
 
@@ -298,7 +305,9 @@
           
             this.physics.arcade.collide(this.pacman, this.layer);
             this.physics.arcade.overlap(this.pacman, this.dots, this.eatDot, null, this);
-
+		
+            this.physics.arcade.overlap(this.pacman, this.snail, this.TakeBonus, null, this);
+		
             this.marker.x = this.math.snapToFloor(Math.floor(this.pacman.x), this.gridsize) / this.gridsize;
             this.marker.y = this.math.snapToFloor(Math.floor(this.pacman.y), this.gridsize) / this.gridsize;
 
