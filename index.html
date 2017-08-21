@@ -20,6 +20,8 @@
             <source src="assets/supermariosong.mp3" type"audio/mp3">
         </audio>
     <script type="text/javascript">
+    
+    var enemySpeed = 73;
 
     var game = new Phaser.Game(448, 496, Phaser.AUTO);
 
@@ -70,6 +72,7 @@
             this.load.image('dot', 'assets/sandwich.png');
             this.load.image('tiles', 'assets/pacman-tiles.png');
             this.load.spritesheet('pacman', 'assets/finn.png', 32, 32);
+            this.load.spritesheet('enemy', 'assets/lsp.png', 32, 32);
             this.load.tilemap('map', 'assets/pacman-map.json', null, Phaser.Tilemap.TILED_JSON);
 
             //  Needless to say, graphics (C)opyright Namco
@@ -101,6 +104,12 @@
 
             this.physics.arcade.enable(this.pacman);
             this.pacman.body.setSize(16, 16, 0, 0);
+            
+            this.enemy = this.add.sprite((14 * 16) + 8, (20 * 16) + 8, 'enemy', 0);
+            this.enemy.anchor.set(0.5);
+       
+            this.physics.arcade.enable(this.enemy);
+            this.enemy.body.setSize(16, 16, 0, 0);
 
             this.cursors = this.input.keyboard.createCursorKeys();
 
@@ -235,6 +244,38 @@
         },
 
         update: function () {
+            
+            
+            
+		this.enemy.scale.x = 1;
+        	if(this.enemy.angle == 0)
+        	{
+        		this.enemy.body.velocity.x = enemySpeed;
+        	}
+        	if(this.enemy.angle == -180)
+        	{
+        		this.enemy.body.velocity.x = -enemySpeed;
+        	}
+        	if(this.enemy.angle == 90)
+        	{
+        		this.enemy.body.velocity.y = enemySpeed;
+        	}
+        	if(this.enemy.angle == -90)
+        	{
+        		this.enemy.body.velocity.y = -enemySpeed;
+        	}       	
+        	if(this.physics.arcade.collide(this.enemy, this.layer))
+        	{
+        		randomVar = Math.floor((Math.random() * 2) + 1);
+        		if(randomVar == 1)
+        		{
+        			this.enemy.angle = this.enemy.angle + 90;
+        		}
+        		else
+        		{
+        			this.enemy.angle = this.enemy.angle - 90;
+        		}        		
+        	}
           
             this.physics.arcade.collide(this.pacman, this.layer);
             this.physics.arcade.overlap(this.pacman, this.dots, this.eatDot, null, this);
