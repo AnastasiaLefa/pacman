@@ -246,6 +246,21 @@
             }
 
         },
+	    
+	TakeBonus: function (pacman, diamond) {
+           
+		diamond.kill();
+            
+            var audio = new Audio('assets/TakeDiamond.mp3');
+            	audio.play()
+            
+            this.bonusscr += 10;
+            this.TextBns.text = 'Bonus:' + this.bonusscr;
+        
+            if(this.diamond.total === 0){
+           	 this.diamond.callAll('revive');
+            }
+        },
 
         update: function () {
             
