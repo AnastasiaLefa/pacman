@@ -11,12 +11,17 @@
             background-size: cover;
             background-position: center;
         }
-       
+     
+        h2 {color: black;}
+        h3 {color: black;}  
     </style>
     <script src="//cdn.jsdelivr.net/phaser/2.2.2/phaser.min.js"></script>
 </head>
 <body>
-
+    
+    <h2 align="center">Anastasia Lefa (Π2013050)</h2>
+    <h3 id="scoreTxt" align="center"></h3>
+    <h3 id="time" align="center"></h3>
 	
     <audio autoplay loop>
 	    <source src="assets/advtheme.mp3" type"audio/mp3">
@@ -253,8 +258,8 @@
 
             dot.kill();
 	  
-	 this.score += 1;
-	 this.TextScr.text = 'Score' + this.score;
+            fuel = fuel - 1;
+            document.getElementById("scoreTxt").innerHTML ="Score: " + score;
 
             if (this.dots.total === 0)
             {
