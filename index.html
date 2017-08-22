@@ -7,7 +7,7 @@
         body {
             margin: 0;
             padding: 0;
-
+            background-image: url('assets/advwallpaper.png');
             background-size: cover;
             background-position: center;
         }
@@ -252,10 +252,7 @@
         eatDot: function (pacman, dot) {
 
             dot.kill();
-		
-		
-	 var audio = new Audio('assets/coin.mp3');
-            audio.play()
+	  
 	 this.score += 1;
 	 this.TextScr.text = 'Score' + this.score;
 
@@ -269,8 +266,8 @@
 	TakeBonus: function (pacman, snail) {
            
 		snail.kill();
-            
-            var audio = new Audio('assets/TakeDiamond.mp3');
+	
+            var audio = new Audio('assets/coin.mp3');
             	audio.play()
             
             this.bonusscr += 10;
