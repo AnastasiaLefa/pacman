@@ -20,8 +20,7 @@
 <body>
     
     <h1 align="left">Anastasia Lefa (Π2013050)</h2>
-    <h3 id="scoreTxt" align="center"></h3>
-    <h3 id="time" align="center"></h3>
+   
 	
     <audio autoplay loop>
 	    <source src="assets/advtheme.mp3" type"audio/mp3">
@@ -53,10 +52,7 @@
         this.current = Phaser.NONE;
         this.turning = Phaser.NONE;
 	this.score = 0;
-        this.TextScr = '';
-        
-        this.bonusscr = 0;
-        this.TextBns = '';    
+   
 
     };
 
@@ -256,8 +252,8 @@
 
             dot.kill();
 	  
-            score = score + 1;
-            document.getElementById("scoreTxt").innerHTML ="Score: " + score;
+            //score = score + 1;
+            //document.getElementById("scoreTxt").innerHTML ="Score: " + score;
 
             if (this.dots.total === 0)
             {
@@ -273,8 +269,8 @@
             var audio = new Audio('assets/coin.mp3');
             	audio.play()
             
-            score += 10;
-            document.getElementById("scoreTxt").innerHTML ="Score: " + score;
+            //score += 10;
+            //document.getElementById("scoreTxt").innerHTML ="Score: " + score;
         
             if(this.snail.total === 0){
            	 this.snail.callAll('revive');
