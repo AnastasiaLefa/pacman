@@ -263,7 +263,7 @@
             dot.kill();
 	  
             score = score + 1;
-            document.getElementById("scoreTxt").innerHTML ="Score: " + score;
+            //document.getElementById("scoreTxt").innerHTML ="Score: " + score;
 
             if (this.dots.total === 0)
             {
@@ -279,8 +279,8 @@
             var audio = new Audio('assets/coin.mp3');
             	audio.play()
             
-            score += 10;
-            document.getElementById("scoreTxt").innerHTML ="Score: " + score;
+            score = score + 10;
+            //document.getElementById("scoreTxt").innerHTML ="Score: " + score;
         
             if(this.snail.total === 0){
            	 this.snail.callAll('revive');
