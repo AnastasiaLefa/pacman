@@ -31,6 +31,9 @@
     <script type="text/javascript">
     
     var enemySpeed = 73;
+    var score = 0;
+    var lifes = 3;
+    var time = 0; 
 
     var game = new Phaser.Game(448, 496, Phaser.AUTO);
 
@@ -55,9 +58,7 @@
         this.current = Phaser.NONE;
         this.turning = Phaser.NONE;
 	
-	var score = 0;
-	var lifes = 3;
-	var time = 0;    
+   
    
 
     };
@@ -263,7 +264,7 @@
             dot.kill();
 	  
             score = score + 1;
-            //document.getElementById("scoreTxt").innerHTML ="Score: " + score;
+            document.getElementById("scoreTxt").innerHTML ="Score: " + score;
 
             if (this.dots.total === 0)
             {
@@ -280,7 +281,7 @@
             	audio.play()
             
             score = score + 10;
-            //document.getElementById("scoreTxt").innerHTML ="Score: " + score;
+            document.getElementById("scoreTxt").innerHTML ="Score: " + score;
         
             if(this.snail.total === 0){
            	 this.snail.callAll('revive');
