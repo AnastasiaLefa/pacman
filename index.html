@@ -33,7 +33,13 @@
     var enemySpeed = 73;
     var score = 0;
     var time = 0; 
-
+    var lives = 3; 
+    var showLife = false;
+	    
+    function show_Life() 
+    {
+        var life_sprite = game.add.sprite(250, 180, 'life');
+    }	    
     var game = new Phaser.Game(448, 496, Phaser.AUTO);
 
     var Pacman = function (game) {
@@ -137,14 +143,7 @@
 
             this.pacman.play('munch');
             this.move(Phaser.LEFT);
-	               life = game.add.group();	
-		
-	                      for (var i= 0; i< 4; i++){
-		                     var pacman = life.create(game.world.width - 280 + (40*i), 517, 'life');
-		                        pacman.anchor.setTo(0.5, 0.5);
-		                         pacman.angle = 0;
-		                            pacman.alpha = 0.4;
-			      }	
+
 	    time = Math.floor(this.game.time.totalElapsedSeconds());
             document.getElementById("time").innerHTML ="Time: " + time + " seconds";
 	
