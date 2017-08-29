@@ -7,6 +7,9 @@
         body {
             margin: 0;
             padding: 0;
+            background-image: url('assets/advwallpaper.png');
+            background-size: cover;
+            background-position: center;
            
         }
      
@@ -138,14 +141,7 @@
 	    this.TextScore = game.add.text(0, 500, 'Score: 0', {fontSize: '25px Candara', fill: '#000'})
             
             this.TextBonus = game.add.text(300, 500, 'Score: 0', {fontSize: '25px Candara', fill: '#000'})
-            
-            	    life = game.add.group();	
-		
-	                      for (var i= 0; i< 4; i++){
-		                     var pacman = life.create(game.world.width - 280 + (40*i), 517, 'life');
-		                        pacman.anchor.setTo(0.5, 0.5);
-		                         pacman.angle = 0;
-		                            pacman.alpha = 0.4;
+
 		
 
         },
@@ -268,8 +264,8 @@
 
             dot.kill();
 	  
-            this.score += 1;
-            this.TextScore.text = 'Score' + this.score;
+            //this.score += 1;
+            //this.TextScore.text = 'Score' + this.score;
 
             if (this.dots.total === 0)
             {
@@ -285,8 +281,8 @@
             var audio = new Audio('assets/coin.mp3');
             	audio.play()
             
-            this.bonusscore += 10;
-            this.TextBonus.text = 'Bonus:' + this.bonusscore;
+            //this.bonusscore += 10;
+            //this.TextBonus.text = 'Bonus:' + this.bonusscore;
         
             if(this.snail.total === 0){
            	 this.snail.callAll('revive');
