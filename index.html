@@ -23,6 +23,7 @@
     <h1 align="left">Anastasia Lefa (Π2013050)</h1>
     <h3 id="scoreTxt" align="left"></h3>
     <h3 id="time" align="left"></h3>
+    <h3 id="life" align="left"></h3>
 	   
 	
     <audio autoplay loop>
@@ -33,13 +34,8 @@
     var enemySpeed = 73;
     var score = 0;
     var time = 0; 
-    var lives = 3; 
-    var showLife = false;
-	    
-    function show_Life() 
-    {
-        var life_sprite = game.add.sprite(450, 500, 'life');
-    }	    
+    
+    	    
     var game = new Phaser.Game(448, 496, Phaser.AUTO);
 
     var Pacman = function (game) {
@@ -145,7 +141,7 @@
             this.move(Phaser.LEFT);
 
 	    time = Math.floor(this.game.time.totalElapsedSeconds());
-            document.getElementById("time").innerHTML ="Time: " + time + " seconds";
+            document.getElementById("time").innerHTML ="Xronos: " + time + " deuterolepta";
 	
 
         },
